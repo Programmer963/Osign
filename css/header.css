@@ -1,0 +1,382 @@
+
+/* Header */
+.header {
+    height: 90px;
+    color: #5c5c5c;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+.header__nav {
+    text-align: center;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.header__nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.header__nav-item {
+    position: relative;
+    padding: 35px 0;
+}
+.header__nav-item:hover .header__nav-link {
+    color: #0d6c68;
+}
+
+.header__nav-link, .header__nav-link span  {
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.header__nav-item #i-up {
+    display: none;
+}
+
+.header__nav-item.active #i-down {
+    display: none;
+}
+
+.header__nav-item.active #i-up {
+    display: block;
+}
+
+
+/* Стили для иконки поиска */
+.header i {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Стили для бургер-меню */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    position: relative; 
+}
+
+.burger span {
+    background-color: #fff;
+    height: 2px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    transform-origin: center;
+}
+
+.burger.active span:nth-child(2) {
+    display: none;
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    transform-origin: center;
+}
+
+
+
+.submenu {
+    width: 210px;
+    text-align: start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+    transition: 0.5s;
+    z-index: -1;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    
+}
+
+.submenu li {
+    padding: 8px 20px;
+    overflow: hidden;
+    position: relative;
+}
+.submenu a {
+    position: relative;
+    transition: 0.5s;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.submenu li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d6c68;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.5s;
+}
+
+.submenu li.active::before {
+    transform: scaleY(1);
+}
+.submenu li.active a {
+    color: #fff;
+}
+
+
+.submenu li:hover::before {
+    transform: scaleY(1);
+}
+.submenu li:hover a {
+    color: #fff;
+}
+
+.header__nav-item:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+}
+
+
+@media screen and (max-width: 968px) {
+    .header {
+        background-color: #0d6c68;
+    }
+    .container {
+        max-width: 90%;
+    }
+    .header__nav>i {
+        display: none;
+    }
+
+    .header__nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #F8F8F8;
+        gap: 0;
+    }
+    .header__nav-list.active {
+        display: flex;
+    }
+    .header__nav-item {
+        border-bottom: 1px solid black;
+        padding: 14px 44px;
+    }
+
+    .header__nav-link {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .header__nav-link, .header__nav-link span  {
+        color: #232323;
+        font-size: 14px;
+    }
+    
+    .header__nav-item.active #i-down {
+        display: none;
+    }
+    .header__nav-item.active #i-up {
+        display: block;
+    }
+
+
+    .burger {
+        display: flex;
+        overflow: auto;
+    }
+
+
+}
+
+
+
+
+/* Стили для затемнения (overlay) */
+#overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #0d6c68;
+    opacity: 0.5;
+    visibility: hidden;
+    transition: right 0.7s ease, visibility 0s 0.7s;
+    z-index: 15;
+}
+
+#overlay.active {
+    right: 0;
+    visibility: visible;
+    transition: right 0.7s ease;
+}
+
+
+/* Основные стили для sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background-color: #272727;
+    transition: right 0.7s ease;
+    z-index: 20;
+}
+
+#sidebar.active {
+    right: 0;
+}
+
+/* Стили для контента в сайдбаре */
+.sidebar-content {
+    padding: 40px 32px;
+    opacity: 0;
+    color: #fff;
+    transform: translateY(50px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.sidebar-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Логотип и заголовок */
+.sidebar-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-content .logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.sidebar-content h2, 
+.sidebar-content h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+
+/* Описание About Us */
+.about-us {
+    margin-top: 30px;
+}
+
+.about-us p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.about-us .consultation {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #0d6c68;
+}
+
+/* Контактная информация */
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.contact-info p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: #ccc;
+}
+
+.contact-info i {
+    margin-right: 12px;
+    color: #0d6c68;
+}
+
+/* Социальные ссылки */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #0d6c68;
+}
+
+/* Кнопка закрытия */
+#close-btn {
+    font-size: 28px;
+    cursor: pointer;
+    color: #0d6c68;
+}
