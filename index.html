@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/style.css">
 
-/>
 </head>
 <body>
     <header class="header">
@@ -127,44 +126,46 @@
     </div>
 
     <main>
-        <section class="slider">
-            <div class="slides">
-              <div class="slide">
-                <img src="img/slider-1.png" alt="Slide 1" />
-                <div class="slide-content">
-                    <h5>WE ARE DESIGN STUDIO</h5>
-                    <h1>
-                        We are a creative interior design studio
-                    </h1>
-                    <div class="slide-button">
-						<a href="#">Get In Touch</a>
-					</div>
+        <div class="swiper-container swiper-main">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/slider-1.png" alt="Slide 1">
+                    <div class="slide-content">
+                        <h5>WE ARE DESIGN STUDIO</h5>
+                        <h1>
+                            We are a creative interior design studio
+                        </h1>
+                        <div class="slide-button">
+                            <a href="#">Get In Touch</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="slide">
-                <img src="img/slider-2.png" alt="Slide 2" />
-                <div class="slide-content">
-                    <h5>WE ARE DESIGN STUDIO</h5>
-                    <h1>
-                        We are a creative interior design studio
-                    </h1>
-                    <div class="slide-button">
-						<a href="#">Get In Touch</a>
-					</div>
+                <div class="swiper-slide">
+                    <img src="img/slider-2.png" alt="Slide 2">
+                    <div class="slide-content">
+                        <h5>WE ARE DESIGN STUDIO</h5>
+                        <h1>
+                            We are a creative interior design studio
+                        </h1>
+                        <div class="slide-button">
+                            <a href="#">Get In Touch</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="slide">
-                <img src="img/slider-3.png" alt="Slide 3" />
-                <div class="slide-content">
-                    <h5>WE ARE DESIGN STUDIO</h5>
-                    <h1>We are a creative interior design studio</h1>
-                    <div class="slide-button">
-						<a href="#">Get In Touch</a>
-					</div>
+                <div class="swiper-slide">
+                    <img src="img/slider-3.png" alt="Slide 3">
+                    <div class="slide-content">
+                        <h5>WE ARE DESIGN STUDIO</h5>
+                        <h1>
+                            We are a creative interior design studio
+                        </h1>
+                        <div class="slide-button">
+                            <a href="#">Get In Touch</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-        </section>
+        </div>
               
         <section class="service-cards">
             <div class="service-card">
@@ -347,7 +348,7 @@
             <h5>OUR TESTIMONIALS</h5>
             <h2>What They’re Saying?</h2>
         
-            <div class="swiper-container">
+            <div class="swiper-container swiper-testimonials">
               <div class="swiper-wrapper">
         
                 <div class="swiper-slide">
@@ -525,34 +526,44 @@
             </ul>
         </div>
     </footer>
+
         
     <script src="js/main.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
     <script>
-      const swiper = new Swiper('.swiper-container', {
-        loop: true,
-        spaceBetween: 30,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          bulletClass: 'swiper-pagination-bullet',
-          bulletActiveClass: 'swiper-pagination-bullet-active',
-          dynamicBullets: false,
-        },
-        speed: 500,
-        breakpoints: {
-            968: {
-            slidesPerView: 2,
+        const swiperMain = new Swiper('.swiper-main', {
+            loop: true,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
             },
-            0: {
-            slidesPerView: 1,
+        });
+        const swiperTestimonials = new Swiper('.swiper-testimonials', {
+            loop: true,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-testimonials .swiper-pagination',
+                clickable: true,
+                bulletClass: 'swiper-pagination-bullet',
+                bulletActiveClass: 'swiper-pagination-bullet-active',
+                dynamicBullets: false,
+            },
+            speed: 500,
+            breakpoints: {
+                968: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                }
             }
-        }
-      });
+        });
     </script>
 </body>
 </html>

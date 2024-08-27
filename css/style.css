@@ -8,70 +8,74 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #232323;
 }
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
 img {
     max-width: 100%;
     height: auto;
 }
-
 ul {
     list-style: none;
 }
 
 
-.slider {
+.swiper-main {
     width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding-top: 60px;
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.3s ease-out;
-}
-
-.slide {
-    min-width: 100vw;
     height: 100vh;
+    overflow: hidden;
+}
+.swiper-main .swiper-slide {
     position: relative;
 }
-
-.slide img {
+.swiper-main .swiper-slide img {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
 }
-
-.slide-content {
+.swiper-main .slide-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.swiper-main .slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
     text-align: center;
     color: white;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: 2s;
+}
+.swiper-main .slide-content.show-animation {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
-.slide-content h5 {
+.swiper-main .slide-content h5 {
     font-size: clamp(12px, 2vw, 16px);      
     font-weight: 400;
 }
 
-.slide-content h1 {
+.swiper-main .slide-content h1 {
     max-width: 90%;
     margin: auto;
     font-size: clamp(20px, 5vw, 60px);
     font-weight: 500;
 }
   
-.slide-button a {
+.swiper-main .slide-button a {
     font-size: clamp(12px, 2vw, 16px);
     font-weight: 500;
     margin-top: 25px;
@@ -85,7 +89,7 @@ ul {
     z-index: 1;
 }
 
-.slide-button a::after {
+.swiper-main .slide-button a::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -103,7 +107,7 @@ ul {
 	opacity: 0;
 }
 
-.slide-button a::before {
+.swiper-main .slide-button a::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -121,17 +125,17 @@ ul {
 	height: 100%;
 }
 
-.slide-button a:hover::before {
+.swiper-main .slide-button a:hover::before {
 	opacity: 1;
 	transform: scale(1);
 }
 
-.slide-button a:hover::after {
+.swiper-main .slide-button a:hover::after {
 	opacity: 1;
 	transform: scale(1);
 }
   
-.slide-content.active {
+.swiper-main .slide-content.active {
     opacity: 1;
 }
   
@@ -763,7 +767,7 @@ ul {
     font-weight: 600;
     margin: 15px 0 45px;
 }
-.swiper-container {
+.swiper-testimonials {
     min-width: 60%;
     max-width: 70%;
     background-color: inherit;
@@ -773,10 +777,8 @@ ul {
     justify-content: center;
     align-items: center;
 }
-.swiper-wrapper {
-    display: flex;
-}
-.swiper-slide {
+
+.swiper-testimonials .swiper-slide {
     width: calc(50% - 30px);
     background-color: #fff;
     display: flex;
@@ -790,12 +792,12 @@ ul {
     transform: scale(0.8);
     transition: 2s;
 }
-.swiper-slide.show-animation {
+.swiper-testimonials .swiper-slide.show-animation {
     opacity: 1;
     transform: scale(1);
 }
 
-.swiper-slide:before {
+.swiper-testimonials .swiper-slide:before {
     content: "";
     position: absolute;
     top: 0;
@@ -808,7 +810,7 @@ ul {
     z-index: -1;
 }
 
-.swiper-slide:hover:before {
+.swiper-testimonials .swiper-slide:hover:before {
     width: 100%;
 }
 
@@ -822,6 +824,10 @@ ul {
 .testimonial-disc {
     font-size: clamp(10px, 2vw, 16px);
     color: #7b7b7b;
+}
+
+.testimonial-content {
+    margin-top: 10px;
 }
 
 .content-about {
@@ -842,14 +848,14 @@ ul {
     font-size: clamp(10px, 2vw, 16px);
     color: #7b7b7b;
 }
-.swiper-pagination {
+.swiper-testimonials .swiper-pagination {
     position: static;
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 40px;
 }
-.swiper-pagination-bullet {
+.swiper-testimonials .swiper-pagination-bullet {
     width: 20px;
     height: 7px;
     background-color: #84d9d3;
@@ -857,12 +863,12 @@ ul {
     border-radius: 2px;
     transition: 0.3s;
 }
-.swiper-pagination-bullet-active {
+.swiper-testimonials .swiper-pagination-bullet-active {
     background-color: #0D6B68;
 }
 
 @media screen and (max-width: 968px) {
-    .swiper-slide {
+    .swiper-testimonials .swiper-slide {
       min-width: 100%;
     }
 }

@@ -9,6 +9,7 @@ function openMenuByBurger() {
 
 burger.addEventListener('click', openMenuByBurger);
 
+
 // Открытия sub-menu
 document.querySelectorAll('.header__nav-item').forEach(item => {
   item.addEventListener('click', function() {
@@ -66,123 +67,6 @@ overlay.addEventListener('click', closeSidebar);
 
 
 
-// Slider
-const slider = document.querySelector('.slider');
-const slides = document.querySelector('.slides');
-const slideElements = document.querySelectorAll('.slide');
-const slideContents = document.querySelectorAll('.slide-content');
-let isDragging = false;
-let startPos = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-let animationID;
-let currentIndex = 0;
-let slideInterval;
-let isScrolling = false;
-
-function startAutoSlide() {
-  slideInterval = setInterval(() => {
-    if (!isDragging && !isScrolling) {
-      currentIndex = (currentIndex + 1) % slideElements.length;
-      setPositionByIndex();
-    }
-  }, 3000);
-}
-
-
-function setPositionByIndex() {
-  const newTranslate = currentIndex * -window.innerWidth;
-  slides.style.transform = `translateX(${newTranslate}px)`;
-
-
-  slideContents.forEach((content, index) => {
-    content.classList.remove('active');
-    if (index === currentIndex) {
-      content.classList.add('active');
-    }
-  });
-}
-
-function stopAutoSlide() {
-  clearInterval(slideInterval);
-}
-
-function startDrag(e) {
-  isDragging = true;
-  startPos = getPositionX(e);
-  animationID = requestAnimationFrame(animation);
-}
-
-function drag(e) {
-  if (!isDragging) return;
-  const currentPosition = getPositionX(e);
-  const diff = currentPosition - startPos;
-  currentTranslate = prevTranslate + diff;
-  slides.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function endDrag() {
-  cancelAnimationFrame(animationID);
-  isDragging = false;
-
-  const movedBy = currentTranslate - prevTranslate;
-
-  if (movedBy < -100 && currentIndex < slideElements.length - 1) {
-    currentIndex += 1;
-  }
-
-  if (movedBy > 100 && currentIndex > 0) {
-    currentIndex -= 1;
-  }
-
-  setPositionByIndex();
-  prevTranslate = currentTranslate;
-}
-
-function getPositionX(e) {
-  return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-}
-
-function animation() {
-  slides.style.transform = `translateX(${currentTranslate}px)`;
-  if (isDragging) requestAnimationFrame(animation);
-}
-
-slider.addEventListener('wheel', (e) => {
-  if (isDragging) return;
-  isScrolling = true;
-  
-  if (e.deltaY < 0 && currentIndex > 0) {
-    currentIndex -= 1;
-  } else if (e.deltaY > 0 && currentIndex < slideElements.length - 1) {
-    currentIndex += 1;
-  }
-  
-  setPositionByIndex();
-  
-  setTimeout(() => {
-    isScrolling = false;
-  }, 2000);
-});
-
-window.addEventListener('load', () => {
-  setPositionByIndex();
-  startAutoSlide();
-});
-
-slider.addEventListener('mousedown', startDrag);
-slider.addEventListener('mouseup', endDrag);
-slider.addEventListener('mouseleave', endDrag);
-slider.addEventListener('mousemove', drag);
-
-slider.addEventListener('touchstart', startDrag);
-slider.addEventListener('touchend', endDrag);
-slider.addEventListener('touchmove', drag);
-
-slider.addEventListener('mouseenter', stopAutoSlide);
-slider.addEventListener('mouseleave', startAutoSlide);
-
-
 
 // Функция для обработки пересечения элементов с областью видимости
 function onEntry(entry) {
@@ -203,6 +87,7 @@ function observeElements(selectors) {
 }
 
 let selectors = [
+  '.slide-content',
   '.service-card',
   '.genemy-image',
   '.genemy-text',
