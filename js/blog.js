@@ -67,35 +67,38 @@ overlay.addEventListener('click', closeSidebar);
 
 // Открытия поиска
 document.getElementById('open-search').addEventListener('click', function() {
-  const searchContainer = document.getElementById('search-container');
-  const searchBox = document.querySelector('.search-box');
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
 
-  searchContainer.classList.add('active');
+    searchContainer.classList.add('active');
 
-  setTimeout(() => {
-      searchBox.classList.add('expanded');
-  }, 500);
+    setTimeout(() => {
+        searchBox.classList.add('expanded');
+    }, 500);
 });
 
 document.getElementById('close-search').addEventListener('click', function() {
-  const searchContainer = document.getElementById('search-container');
-  const searchBox = document.querySelector('.search-box');
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
 
-  searchBox.classList.remove('expanded');
+    searchBox.classList.remove('expanded');
 
-  setTimeout(() => {
-      searchContainer.classList.remove('active');
-  }, 500);
+    setTimeout(() => {
+        searchContainer.classList.remove('active');
+    }, 500);
 });
 
 document.getElementById('search-btn').addEventListener('click', function() {
-  const searchInput = document.getElementById('search-input').value;
+    const searchInput = document.getElementById('search-input').value;
 
-  alert('Вы хотели найти: ' + searchInput);
+    alert('Вы хотели найти: ' + searchInput);
 });
 
 
-// Функция для обработки пересечения элементов с областью видимости
+
+
+
+
 function onEntry(entry) {
     entry.forEach(change => {
       if (change.isIntersecting) {
@@ -108,24 +111,21 @@ let options = { threshold: [0.5] };
 let observer = new IntersectionObserver(onEntry, options);
 
 function observeElements(selectors) {
-  selectors.forEach(selector => {
+    selectors.forEach(selector => {
     document.querySelectorAll(selector).forEach(el => observer.observe(el));
-  });
+});
 }
 
 let selectors = [
-  '.comment',
-  '.categories',
-  '.blog-search',
-  '.blog-about',
-  '.creation-history-image',
-  '.creation-history-text',
+    '.blog-card',
+    '.genemy-image',
+    '.genemy-text',
 
-  '.company-info',
-  '.customer-service',
-  '.extras',
-  '.store-information'
+
+    '.company-info',
+    '.customer-service',
+    '.extras',
+    '.store-information'
 ];
 
 observeElements(selectors);
-

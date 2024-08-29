@@ -64,6 +64,34 @@ closeBtn.addEventListener('click', closeSidebar);
 overlay.addEventListener('click', closeSidebar);
 
 
+// Открытия поиска
+document.getElementById('open-search').addEventListener('click', function() {
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
+
+    searchContainer.classList.add('active');
+
+    setTimeout(() => {
+        searchBox.classList.add('expanded');
+    }, 500);
+});
+
+document.getElementById('close-search').addEventListener('click', function() {
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
+
+    searchBox.classList.remove('expanded');
+
+    setTimeout(() => {
+        searchContainer.classList.remove('active');
+    }, 500);
+});
+
+document.getElementById('search-btn').addEventListener('click', function() {
+    const searchInput = document.getElementById('search-input').value;
+
+    alert('Вы хотели найти: ' + searchInput);
+});
 
 // Функция для обработки пересечения элементов с областью видимости
 function onEntry(entry) {
@@ -85,6 +113,7 @@ selectors.forEach(selector => {
 
 let selectors = [
     '.portfolio-project',
+    '.swiper-slide',
     '.company-info',
     '.customer-service',
     '.extras',

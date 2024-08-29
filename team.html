@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team</title>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/other.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -55,7 +57,7 @@
                                 <i id="i-up" class="fas fa-chevron-up"></i>
                             </a>
                             <ul class="submenu">
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="blog.html">Blog</a></li>
                                 <li><a href="blog-list.html">Blog List</a></li>
                                 <li><a href="blog-details.html">Blog-Details</a></li>
                             </ul>
@@ -76,7 +78,7 @@
                         </li>
                     </ul>
 
-                    <i class="fas fa-search"></i>
+                    <i id="open-search" class="fas fa-search"></i>
                     <i id="sidebarBurger" class="fas fa-bars"></i>
                     <div class="burger" id="burger">
                         <span></span>
@@ -87,6 +89,14 @@
             </div>
         </div>
     </header>
+
+    <div class="search-container" id="search-container">
+        <i id="close-search" class="fas fa-times"></i>
+        <div class="search-box">
+            <input type="text" placeholder="Search Here" class="search-input" id="search-input">
+            <i id="search-btn" class="fas fa-search"></i>
+        </div>
+    </div>
 
     <div id="overlay"></div>
     <div id="sidebar">
@@ -193,7 +203,102 @@
                     </div>
                 </div>
             </div>
-        </section>      
+        </section>
+        
+        <section class="testimonials">
+            <h5>OUR TESTIMONIALS</h5>
+            <h2>What They’re Saying?</h2>
+        
+            <div class="swiper-container swiper-testimonials">
+              <div class="swiper-wrapper">
+        
+                <div class="swiper-slide">
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+        
+                  <p class="testimonial-disc">
+                    “ITo helped the client achieve their goal of calling the attention devel
+                    of mobile network operators. The expert team was also able toan ap
+                    commendable UI/UX. The client erms.”
+                  </p>
+        
+                  <div class="testimonial-content">
+                    <div class="content-about">
+                      <img src="img/testimonial-1.png" alt="testimonial image">
+                      <div class="content-about-text">
+                        <h3>Jhon Deovo</h3>
+                        <p>Web Designer</p>
+                      </div>
+                    </div>
+                    
+                    <img src="" alt="">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+        
+                  <p class="testimonial-disc">
+                    “ITo helped the client achieve their goal of calling the attention devel
+                    of mobile network operators. The expert team was also able toan ap
+                    commendable UI/UX. The client erms.”
+                  </p>
+        
+                  <div class="testimonial-content">
+                    <div class="content-about">
+                      <img src="img/testimonial-1.png" alt="testimonial image">
+                      <div class="content-about-text">
+                        <h3>Jhon Deovo</h3>
+                        <p>Web Designer</p>
+                      </div>
+                    </div>
+                    
+                    <img src="" alt="">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+        
+                  <p class="testimonial-disc">
+                    “ITo helped the client achieve their goal of calling the attention devel
+                    of mobile network operators. The expert team was also able toan ap
+                    commendable UI/UX. The client erms.”
+                  </p>
+        
+                  <div class="testimonial-content">
+                    <div class="content-about">
+                      <img src="img/testimonial-1.png" alt="testimonial image">
+                      <div class="content-about-text">
+                        <h3>Jhon Deovo</h3>
+                        <p>Web Designer</p>
+                      </div>
+                    </div>
+                    
+                    <img src="" alt="">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
           
 
         <section class="blog">
@@ -286,5 +391,33 @@
     </footer>
 
     <script src="js/team.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        const swiperTestimonials = new Swiper('.swiper-testimonials', {
+            loop: true,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-testimonials .swiper-pagination',
+                clickable: true,
+                bulletClass: 'swiper-pagination-bullet',
+                bulletActiveClass: 'swiper-pagination-bullet-active',
+                dynamicBullets: false,
+            },
+            speed: 500,
+            breakpoints: {
+                968: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+    </script>
 </body>
 </html>

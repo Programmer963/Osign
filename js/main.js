@@ -1,4 +1,3 @@
-// Открытия menu
 const burger = document.getElementById('burger');
 const navList = document.querySelector('.header__nav-list');
 
@@ -8,7 +7,6 @@ function openMenuByBurger() {
 }
 
 burger.addEventListener('click', openMenuByBurger);
-
 
 // Открытия sub-menu
 document.querySelectorAll('.header__nav-item').forEach(item => {
@@ -21,11 +19,11 @@ document.querySelectorAll('.header__nav-item').forEach(item => {
               el.querySelector('#i-up').style.display = 'none';
           }
       });
-      
+
       item.classList.toggle('active');
       const submenu = item.querySelector('.submenu');
       submenu.classList.toggle('active');
-      
+
       const iDown = item.querySelector('#i-down');
       const iUp = item.querySelector('#i-up');
       iDown.style.display = submenu.classList.contains('active') ? 'none' : 'block';
@@ -65,6 +63,34 @@ closeBtn.addEventListener('click', closeSidebar);
 overlay.addEventListener('click', closeSidebar);
 
 
+// Открытия поиска
+document.getElementById('open-search').addEventListener('click', function() {
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
+
+    searchContainer.classList.add('active');
+
+    setTimeout(() => {
+        searchBox.classList.add('expanded');
+    }, 500);
+});
+
+document.getElementById('close-search').addEventListener('click', function() {
+    const searchContainer = document.getElementById('search-container');
+    const searchBox = document.querySelector('.search-box');
+
+    searchBox.classList.remove('expanded');
+
+    setTimeout(() => {
+        searchContainer.classList.remove('active');
+    }, 500);
+});
+
+document.getElementById('search-btn').addEventListener('click', function() {
+    const searchInput = document.getElementById('search-input').value;
+
+    alert('Вы хотели найти: ' + searchInput);
+});
 
 
 
@@ -87,19 +113,19 @@ function observeElements(selectors) {
 }
 
 let selectors = [
-  '.slide-content',
-  '.service-card',
-  '.genemy-image',
-  '.genemy-text',
-  '.our-team-card',
-  '.swiper-slide',
-  '.blog-card',
-  
-  '.portfolio-project',
-  '.company-info',
-  '.customer-service',
-  '.extras',
-  '.store-information'
+    '.slide-content',
+    '.service-card',
+    '.genemy-image',
+    '.genemy-text',
+    '.our-team-card',
+    '.swiper-slide',
+    '.blog-card',
+
+    '.portfolio-project',
+    '.company-info',
+    '.customer-service',
+    '.extras',
+    '.store-information'
 ];
 
 observeElements(selectors);
@@ -113,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filterItems.forEach(item => {
         item.addEventListener('click', () => {
             const filter = item.getAttribute('data-filter');
-            
+
             filterItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
 
@@ -130,4 +156,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('.portfolio-filter li[data-filter="all"]').click();
 });
-
