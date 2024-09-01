@@ -1,3 +1,39 @@
+// scroll to top
+window.onscroll = function() {
+  const scrollToTop = document.getElementById('scrollToTop');
+  const progressCircle = document.querySelector('.progress-ring__circle'); 
+  const radius = progressCircle.r.baseVal.value;
+  const circumference = 2 * Math.PI * radius;
+
+  const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollTop = window.scrollY;
+
+  const scrollPercent = scrollTop / totalScrollHeight;
+  const offset = circumference - scrollPercent * circumference;
+
+  progressCircle.style.strokeDashoffset = offset;
+
+  if (scrollTop > 100) {
+      scrollToTop.style.visibility = 'visible';
+      scrollToTop.style.opacity = 1;
+      scrollToTop.style.transform = 'translateY(0)';
+      scrollToTop.style.transition = 'opacity 0.5s ease, transform 0.5s ease, visibility 0s';
+  } else {
+      scrollToTop.style.visibility = 'hidden';
+      scrollToTop.style.opacity = 0;
+      scrollToTop.style.transform = 'translateY(20px)';
+      scrollToTop.style.transition = 'opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s';
+  }
+};
+
+document.getElementById('scrollToTop').onclick = function() {
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+};
+
+
 // Открытия menu
 const burger = document.getElementById('burger');
 const navList = document.querySelector('.header__nav-list');

@@ -21,6 +21,55 @@ ul {
 }
 
 
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    width: 45px;
+    height: 45px;
+    color: #0D6B68;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.scroll-to-top i {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    z-index: 0;
+}
+.progress-ring__background {
+    fill: transparent;
+    stroke: #ccc;
+    stroke-width: 1;
+}
+.progress-ring__circle {
+    fill: transparent;
+    stroke: #0D6B68;
+    stroke-width: 2;
+    stroke-dasharray: 126;
+    stroke-dashoffset: 126;
+    transition: stroke-dashoffset 0.35s;
+    stroke-linecap: round;
+}
+
+
+
 .swiper-main {
     width: 100%;
     height: 100vh;
